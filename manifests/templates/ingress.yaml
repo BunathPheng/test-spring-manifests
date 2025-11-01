@@ -1,0 +1,21 @@
+---
+# Source: helm for kubernetes/templates/ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-spring                  # Ingress name
+  labels:
+    app: test-spring
+spec:
+  ingressClassName: nginx   # Optional ingressClass
+  rules:
+    - host: "test-spring.smartops.space"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: test-spring               # Links to Service name dynamically
+                port:
+                  number: 8080  # Links to service port dynamically
