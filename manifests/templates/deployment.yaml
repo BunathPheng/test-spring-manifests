@@ -1,0 +1,24 @@
+---
+# Source: helm for kubernetes/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-spring
+  labels:
+    app: test-spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-spring
+  template:
+    metadata:
+      labels:
+        app: test-spring
+    spec:
+      containers:
+        - name: test-spring
+          image: docker.io/phengbunath/test-spring:1
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
